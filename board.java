@@ -1,6 +1,3 @@
-import java.util.Set;
-import java.util.HashSet;
-
 class board {
   public static final int empty = 0;
   public static final int queen = 1;
@@ -38,7 +35,6 @@ class board {
       return b;
     }
     while (emptySq(b)) {
-      // if first queen is placed randomly is it all random
       if (q != boardSize) {
         for (int i = 0; i < b.length; i++) {
           for (int j = 0; j < b[i].length; j++) {
@@ -128,19 +124,15 @@ class board {
     if (b==null) {
       return false;
     }
-    Set<Integer> queenX = new HashSet<Integer>();
-    Set<Integer> queenY = new HashSet<Integer>();
-    Set<Integer> diffs = new HashSet<Integer>();
+    int q = 0;
     for (int i = 0; i < boardSize; i++) {
       for (int j = 0; j < boardSize; j++) {
         if (b[i][j] == queen) {
-          queenX.add(i);
-          queenY.add(j);
-          diffs.add(i-j);
+          q++;
         }
       }
     }
     //System.out.println(b);
-    return (queenX.size() > 0);
+    return (q == boardSize);
   }
 }
